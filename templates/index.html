@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>めいちゃん Happy Birthday</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- 1ページ目 -->
+    <div class="page active" id="page1">
+        <div class="content birthday-content">
+
+            
+            <div class="cake">🎂</div>
+            <div class="balloons">🎈　🎈　🎈</div>
+
+            <h1 class="main-name">くぼた！！</h1>
+            <h2 class="main-birthday">Happy Birthday</h2>
+
+            <div class="star-decoration">
+                ✧･ﾟ: *✧･ﾟ:*　♡　*:･ﾟ✧*:･ﾟ✧
+            </div>
+
+            <p>20歳おめでとう！</p>
+            <p>素敵な1年になりますように🍀</p>
+
+            <!-- 写真は文章のすぐ下 -->
+            <div class="photo-container">
+                <img src="{{ url_for('static', filename='birthday1.jpg') }}"
+                     class="birthday-photo" alt="写真1">
+
+                <img src="{{ url_for('static', filename='birthday2.jpg') }}"
+                     class="birthday-photo" alt="写真2">
+            </div>
+
+            <div class="bottom-decoration">♡ ♡ ♡</div>
+
+            <button type="button" onclick="nextPage(2)">次へ →</button>
+        </div>
+    </div>
+
+
+    <!-- 2ページ目 -->
+    <div class="page" id="page2">
+        <div class="content">
+
+            <div class="gift-icon">🥂</div>
+
+            <h1>誕生日プレゼントは...</h1>
+
+            <div class="present-message">
+                <p>「どろんさんとデート💗」</p>
+            </div>
+
+            <p class="expiry">
+                素敵な思い出を一緒につくろー
+            </p>
+
+            <div class="heart-decoration">♡　♡　♡</div>
+
+            <button type="button" onclick="nextPage(3)">次へ →</button>
+            <button type="button" onclick="nextPage(1)">戻る</button>
+        </div>
+    </div>
+
+
+    <!-- 3ページ目 -->
+    <div class="page" id="page3">
+        <div class="content">
+
+            <h1>どこに行きたい？？</h1>
+            <p>好きな場所を選んでね♡</p>
+
+            <div class="place-container">
+
+                <button type="button" class="place-card"
+                        onclick="selectPlace('memory')">
+                    <div class="place-icon">💗</div>
+                    <span>思い出の場所</span>
+                </button>
+
+                <button type="button" class="place-card"
+                        onclick="selectPlace('usual')">
+                    <div class="place-icon">🐸</div>
+                    <span>蛙化上等</span>
+                </button>
+
+                <button type="button" class="place-card"
+                        onclick="selectPlace('new')">
+                    <div class="place-icon">🛬</div>
+                    <span>パスポート必須</span>
+                </button>
+
+            </div>
+
+            <button type="button" onclick="nextPage(2)">戻る</button>
+        </div>
+    </div>
+
+
+    <!-- 4ページ目 -->
+    <div class="page" id="page4">
+        <div class="content">
+
+            <div class="gift-icon">💙💙💙</div>
+
+            <h1>↓↓↓</h1>
+
+            <div id="result"></div>
+
+            <button type="button" onclick="nextPage(3)">戻る</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        // ボタンをクリックしたときだけページを切り替える
+        function nextPage(number) {
+
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
+
+            document.getElementById("page" + number).classList.add("active");
+
+        }
+
+
+        // 選んだ場所に合わせてお店を表示する
+        function selectPlace(place) {
+
+            const places = {
+
+                memory: {
+                    title: "思い出の場所💗",
+                    name: "均タロー（てけてけ跡地）",
+                    message: "大ピンチです！！"
+                },
+
+                usual: {
+                    title: "蛙化上等🐸",
+                    name: "飲めるタコス🌮",
+                    message: "一緒に蛙化デートだね"
+                },
+
+                new: {
+                    title: "パスポート必須🛬",
+                    name: "チキン屋さん",
+                    message: "めいちゃんが好きなだけチキン食べるの"
+                }
+
+            };
+
+            const selected = places[place];
+
+            document.getElementById("result").innerHTML = `
+                <div class="shop-result">
+                    <h2>${selected.title}</h2>
+                    <h3>${selected.name}</h3>
+                    <p>${selected.message}</p>
+                </div>
+            `;
+
+            // お店を表示してから4ページ目に切り替える
+            nextPage(4);
+
+        }
+
+    </script>
+
+</body>
+</html>
