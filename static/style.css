@@ -1,0 +1,304 @@
+
+/* ページ全体 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    background: linear-gradient(135deg, #fff0f3, #fce4ec, #fff5e8);
+    color: #76545c;
+}
+
+/* ページは重ねておき、activeのページだけ表示 */
+.page {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* ページ内の内容 */
+.content {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 15px 0;
+}
+
+/* 見出し */
+h1 {
+    color: #bd7189;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #c78398;
+    font-size: 26px;
+}
+
+h3 {
+    color: #bd7189;
+    font-size: 23px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* 1ページ目：誕生日デザイン */
+.birthday-label {
+    display: inline-block;
+    background: #f4c6d2;
+    color: white;
+    border-radius: 30px;
+    padding: 6px 20px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.cake {
+    font-size: 43px;
+    margin: 2px;
+}
+
+.balloons {
+    font-size: 22px;
+    margin: 2px;
+}
+
+.main-name {
+    font-size: 38px;
+    color: #c36f8a;
+    margin: 5px 0;
+    letter-spacing: 5px;
+}
+
+.main-birthday {
+    font-size: 28px;
+    color: #d28ba0;
+    margin: 5px 0 10px;
+}
+
+.star-decoration {
+    color: #e5a8b8;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.bottom-decoration {
+    color: #d995a9;
+    font-size: 20px;
+    margin: 5px;
+}
+
+/* 写真2枚：文章の下に小さめに表示 */
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 10px auto;
+}
+
+.birthday-photo {
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(180, 100, 125, 0.18);
+}
+
+/* 2ページ目 */
+.gift-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.present-message {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid #f1c3d0;
+    border-radius: 20px;
+    padding: 15px 10px;
+    margin: 25px auto;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(180, 100, 125, 0.10);
+}
+
+.present-message p {
+    color: #b75e7d;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.expiry {
+    font-size: 15px;
+    color: #9b7781;
+}
+
+.heart-decoration {
+    color: #d995a9;
+    font-size: 23px;
+    margin: 15px;
+}
+
+/* 3ページ目：場所の選択 */
+.place-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px auto;
+    flex-wrap: wrap;
+}
+
+.place-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 145px;
+    height: 155px;
+    padding: 10px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.85);
+    color: #bd7189;
+    border: 2px solid #f0c5d1;
+    border-radius: 22px;
+    box-shadow: 0 5px 12px rgba(180, 100, 125, 0.12);
+}
+
+.place-card:hover {
+    background: #fff8fa;
+    border-color: #d995a9;
+    transform: translateY(-5px);
+}
+
+.place-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.place-card span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 4ページ目：お店の発表 */
+.shop-result {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid #f0c5d1;
+    border-radius: 22px;
+    padding: 25px 15px;
+    margin: 25px auto;
+    max-width: 450px;
+    box-shadow: 0 5px 12px rgba(180, 100, 125, 0.12);
+}
+
+.shop-result h2 {
+    font-size: 23px;
+    color: #c78398;
+}
+
+.shop-result h3 {
+    font-size: 30px;
+    color: #bd7189;
+    margin: 20px 0;
+}
+
+.shop-result p {
+    font-size: 17px;
+}
+
+/* ボタン */
+button {
+    background-color: #d995a9;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    margin: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #bd7189;
+    transform: scale(1.05);
+}
+
+/* スマートフォン用 */
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .main-name {
+        font-size: 33px;
+    }
+
+    .main-birthday {
+        font-size: 24px;
+    }
+
+    .birthday-photo {
+        width: 125px;
+        height: 125px;
+    }
+
+    .photo-container {
+        gap: 10px;
+    }
+
+    .place-container {
+        gap: 10px;
+    }
+
+    .place-card {
+        width: 105px;
+        height: 135px;
+    }
+
+    .place-icon {
+        font-size: 36px;
+    }
+
+    .place-card span {
+        font-size: 13px;
+    }
+
+    .present-message p {
+        font-size: 19px;
+    }
+
+    .shop-result h3 {
+        font-size: 25px;
+    }
+}
